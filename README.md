@@ -11,20 +11,6 @@ It allows the user to create virtual machines (VMs), saves it into JSON file and
 - Run install_nginx.sh to install or skip NGINX
 - Everything written into logs/provisioning.log
 
-# Project Structure
-infra-automation/
-│
-├─ src/
-│   └─ machine.py
-├─ scripts/
-│   └─ install_nginx.sh
-├─ configs/
-│   └─ instances.json
-├─ logs/
-│   └─ provisioning.log
-├─ infra_simulator.py
-├─ requirements.txt
-
 # Setup
 - Clone the repository
 - Create virtual environment
