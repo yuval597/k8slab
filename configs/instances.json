@@ -1,1 +1,14 @@
-[]
+[
+    {
+        "name": "ubuntu",
+        "os": "ubuntu",
+        "cpu": 8,
+        "ram": 16
+    },
+    {
+        "name": "centos",
+        "os": "centos",
+        "cpu": 8,
+        "ram": 16
+    }
+]

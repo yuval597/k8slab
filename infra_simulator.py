@@ -9,7 +9,7 @@
 
 from pydantic import ValidationError
 import json
-from src.machine import Machine, MachineModel
+from src.machine import Machine, _machine
 import subprocess
 import logging
 
@@ -23,7 +23,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 # Ask the user to enter machine details (name, OS, CPU, RAM)
-# Uses MachineModel to validate the input
+# Uses _machine to validate the input
 # Returns a Machine object if valid, or None if invalid
 def prompt_for_machine ():
     name = input("Enter machine name here: ")
@@ -31,7 +31,7 @@ def prompt_for_machine ():
     cpu = input("Enter required CPU here: ")
     ram = input("Enter required RAM here: ")
     try:
-        machine = MachineModel(
+        machine = _machine(
         name=name,
         os=os,
         cpu=cpu,

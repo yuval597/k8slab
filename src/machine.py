@@ -1,14 +1,14 @@
-# This file defines the MachineModel (for validation) and Machine (final machine object).
-# MachineModel = the actual object we create and save, based on the validated data
+# This file defines the _machine (for validation) and Machine (final machine object).
+# _machine = the actual object we create and save, based on the validated data
 
 import logging
 from pydantic import BaseModel, field_validator
 
 logger = logging.getLogger(__name__)
 
-# MachineModel - validates raw user input for machine details before creating a Machine object
+# _machine - validates raw user input for machine details before creating a Machine object
 # It makes sure the name is valid, CPU/RAM are numbers, OS is allowed, etc
-class MachineModel(BaseModel):
+class _machine(BaseModel):
     name: str
     os: str
     cpu: int
