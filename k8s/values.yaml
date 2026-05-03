@@ -6,7 +6,7 @@ database_test:
   dbtable: "music"
 
 # service_type should be NodePort, ClusterIP or LoadBalancer
-service_type: ClusterIP
+service_type: LoadBalancer
 replicas: 1
 
 ingress:
@@ -14,6 +14,6 @@ ingress:
 
 pod:
   image: "yuval597/myapp"  
-  tag: "v1"                   
-  target_port: 80              
-  port: 80
+  tag: "v3"                   
+  target_port: 5001             
+  port: 5001

@@ -3,9 +3,9 @@ apiVersion: v1
 metadata:
   name: {{ .Release.Name }}-svc #from RELEASE NAME
 spec:
+  type: {{ .Values.service_type }}
   selector:
     app: {{ .Release.Name }}
-  {{ include "spring.type" . | nindent 2 }}
   ports:
   - name: http
     protocol: TCP
