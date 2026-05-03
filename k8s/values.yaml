@@ -13,7 +13,7 @@ ingress:
   enabled: true
 
 pod:
-  image: "yuval597/infra-sim"  
+  image: "yuval597/myapp"  
   tag: "v1"                   
   target_port: 80              
   port: 80
