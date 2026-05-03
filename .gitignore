@@ -10,3 +10,10 @@ venv/
 
 # System files
 .DS_Store
+
+.env
+*.env
+awsvalues.yaml
+*.pem
+*.key
+

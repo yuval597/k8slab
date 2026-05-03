@@ -1,0 +1,6 @@
+apiVersion: v2 
+name: infra-sim
+description: A Helm chart for Infra Simulator
+type: application
+version: 0.1.0
+appVersion: "1"
