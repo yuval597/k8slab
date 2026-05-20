@@ -35,7 +35,7 @@ podTemplate(cloud: 'kubernetes', containers: [
 		stage('Push') {
 			container('docker') {
 				withCredentials([usernamePassword(
-					credentialsId: 'dockercred'
+					credentialsId: 'dockercred',
 					usernameVariable: 'DOCKER_USER',
 					passwordVariable: 'DOCKER_PASS'
 					)]) {
