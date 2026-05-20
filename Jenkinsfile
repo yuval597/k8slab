@@ -13,7 +13,13 @@ podTemplate(cloud: 'kubernetes', containers: [
         image: 'docker:26-dind',
         privileged: true,
         args: '--storage-driver=vfs'
-    )
+    ),
+    containerTemplate(
+    name: 'deployer',
+    image: 'elevy99927/k8s-deployer:latest',
+    command: 'cat',
+    ttyEnabled: true
+)
 ],
 volumes: [
     emptyDirVolume(mountPath: '/var/lib/docker', memory: false)
@@ -47,6 +53,14 @@ volumes: [
                     echo "Pushing docker"
                     sh "docker push $appimage:$apptag"
                 }
+            }
+            
+        }
+        stage('Helm') {
+            container('deployer') {
+                sh 'helm version'
+                sh 'kubectl version --client'
+                sh 'helm upgrade --install hello-newapp ./helm'
             }
         }
     }
