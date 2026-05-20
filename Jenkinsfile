@@ -61,7 +61,7 @@ volumes: [
                 sh 'helm version'
                 sh 'kubectl version --client'
                 sh 'kubectl get pods'
-                sh 'helm template hello-newapp .'
+                sh 'helm template hello-newapp ./k8s'
             }
         }
     }
