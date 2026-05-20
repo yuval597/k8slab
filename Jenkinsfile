@@ -40,7 +40,7 @@ podTemplate(cloud: 'kubernetes', containers: [
 					passwordVariable: 'DOCKER_PASS'
 					)]) {
 					echo "Logging to DockerHub"
-					sh "echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin'
+					sh "echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin"
 				    echo "Pushing docker"
 					sh "docker push $appimage:$apptag"
 				}
