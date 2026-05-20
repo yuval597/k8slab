@@ -25,11 +25,24 @@ podTemplate(cloud: 'kubernetes', containers: [
           }
         } // end checkout
 
-        stage('Hello') {
+        stage('Build') {
             container('docker') {
               echo "Building docker image..."
               sh "docker build -t $appimage:$apptag ."
             }
         } //end hello
+
+		stage('Push') {
+			container('docker') {
+				withCredentials([usernamePassword(
+					credentialsId: 'dockercred'
+					usernameVariable: 'DOCKER_USER',
+					passwordVariable: 'DOCKER_PASS'
+					)]) {
+					echo "Logging to DockerHub"
+					sh "echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin'
+				    echo "Pushing docker"
+					sh "docker push $appimage:$apptag"
+				}
     }
 }
