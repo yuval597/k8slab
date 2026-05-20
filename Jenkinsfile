@@ -61,7 +61,7 @@ volumes: [
                 sh 'helm version'
                 sh 'kubectl version --client'
                 sh 'kubectl get pods'
-                sh 'helm upgrade --install hello-newapp . --dry-run'
+                sh 'helm template hello-newapp .'
             }
         }
     }
