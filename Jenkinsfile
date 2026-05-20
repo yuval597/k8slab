@@ -60,7 +60,7 @@ volumes: [
             container('deployer') {
                 sh 'helm version'
                 sh 'kubectl version --client'
-                sh 'helm upgrade --install hello-newapp ./helm'
+                sh 'helm upgrade --install hello-newapp .'
             }
         }
     }
