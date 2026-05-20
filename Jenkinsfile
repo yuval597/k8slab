@@ -28,7 +28,7 @@ podTemplate(cloud: 'kubernetes', containers: [
         stage('Hello') {
             container('docker') {
               echo "Building docker image..."
-              sh "docker build $appimage"
+              sh "docker build -t $appimage ."
             }
         } //end hello
     }
