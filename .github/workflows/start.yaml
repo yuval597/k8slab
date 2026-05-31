@@ -18,12 +18,24 @@ jobs:
     needs: hello
 
     steps:
-      - name: Build app
-        run: echo "Building"
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Docker login
+        run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
+
+      - name: Docker build
+        run: docker build -t yuval597/k8slab:${{ github.run_number }} .
+
+      - name: Docker push
+        run: docker push yuval597/k8slab:${{ github.run_number }}
+
+      - name: Helm template
+        run: helm template k8slab ./k8s
   
   slack-notify:
     runs-on: ubuntu-latest
-    needs: hello
+    needs: build
 
     steps: 
       - name: Slack notify
