@@ -158,10 +158,4 @@ helm upgrade --install k8slab ./k8s -f k8s/values.yaml --set pod.image=yuval597/
 
 "I built an end-to-end CI pipeline around a Python application. The application is containerized using Docker, automatically built through GitHub Actions, pushed to DockerHub, validated using Helm charts, and integrated with Slack notifications. I also implemented the pipeline using Jenkins previously to understand different CI/CD approaches. The project is prepared for future Kubernetes deployment using Helm or ArgoCD."
 
----
-
-Files added/updated:
-- `README.md` (this file)
-
-If you'd like, I can now update the `PRESENTATION.md` to align with the same corrections.
 
