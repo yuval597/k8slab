@@ -28,7 +28,7 @@ jobs:
 
     steps: 
       - name: Slack notify
-        uses: uses: rtCamp/action-slack-notify@v2
+        uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
           SLACK_CHANNEL: alerts
