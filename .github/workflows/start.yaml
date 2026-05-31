@@ -1,7 +1,6 @@
-name: hello
+name: start
 
 on:
-  push:
   workflow_dispatch:
 
 jobs:
