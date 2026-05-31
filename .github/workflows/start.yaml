@@ -46,8 +46,8 @@ jobs:
           SLACK_USERNAME: Yuval Schreiber
           SLACK_TITLE: Notification
           SLACK_MESSAGE: 
-            Repository: ${{ github.repository }}
-            Branch: ${{ github.ref_name }}
-            Image: yuval597/k8slab:${{ github.run_number }}
-            Commit: ${{ github.sha }}
+              Repository: ${{ github.repository }}
+              Branch: ${{ github.ref_name }}
+              Image: yuval597/k8slab:${{ github.run_number }}
+              Commit: ${{ github.sha }}
           SLACK_COLOR: good
