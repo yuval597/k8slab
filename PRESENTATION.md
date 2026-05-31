@@ -1,9 +1,8 @@
-
 Presentation / Interview Notes: k8slab
 
 Elevator pitch
 
-End-to-end DevOps CI pipeline for a containerized Python application. The repository demonstrates a production-oriented CI workflow that builds container images, pushes them to DockerHub, validates Helm charts in CI, and reports pipeline results to Slack. The pipeline was originally implemented using Jenkins Pipeline and later migrated/recreated using GitHub Actions to demonstrate familiarity with both CI platforms.
+End-to-end DevOps CI pipeline for a containerized Python application. The repository demonstrates a real-world DevOps CI workflow that builds container images, pushes them to DockerHub, validates Helm charts in CI, and reports pipeline results to Slack. The pipeline was originally implemented using Jenkins Pipeline and later migrated/recreated using GitHub Actions to demonstrate familiarity with both CI platforms.
 
 Architecture (one-liner)
 
@@ -20,19 +19,21 @@ Why this is useful in a real environment
 
 - Reproducible builds: Dockerfile + CI produce consistent images tagged by build number.
 - Configuration-as-code: Helm chart enables parameterized deployments across environments.
+- Secure automation: DockerHub credentials and Slack webhooks are stored using GitHub Actions Secrets.
 - Notification / feedback loop: Slack integration provides immediate visibility into CI runs.
 
 Notes on CI platform migration
 
 This project was originally implemented with a Jenkins Pipeline (stages, scripted/Declarative syntax) and later migrated to GitHub Actions. The transition demonstrates understanding of:
-- Jenkins stages and pipeline structure (build, test, publish stages).
-- GitHub Actions jobs and steps (parallelism, needs dependencies, reusable actions).
+- Jenkins stages and pipeline structure (checkout, build, publish, and deployment-related stages).
+- GitHub Actions jobs and steps (needs dependencies, reusable Marketplace actions).
 - Trade-offs between CI platforms and practical migration steps.
 
 Interview talking points / challenges
 
 - The workflow uses `helm template` in CI to validate rendering but does not deploy to Kubernetes; deployment is a separate step.
 - Image tagging uses the workflow run number; for production you'd prefer semantic tags or commit SHAs and a promotion strategy.
+- Sensitive values such as DockerHub tokens and Slack webhooks are managed through GitHub Secrets and are not stored in the repository.
 
 Possible follow-ups to mention
 
@@ -51,5 +52,4 @@ Short script to demo in an interview
 
 One-minute summary
 
-"I built an end-to-end CI pipeline around a Python application. The application is containerized using Docker, automatically built through GitHub Actions, pushed to DockerHub, validated using Helm charts, and integrated with Slack notifications. I also implemented the pipeline using Jenkins previously to understand different CI/CD approaches. The project is prepared for future Kubernetes deployment using Helm or ArgoCD."
-
+"I built an end-to-end CI pipeline around a Python application. The application is containerized using Docker, automatically built through GitHub Actions, pushed to DockerHub, validated using Helm charts, and integrated with Slack notifications. I also implemented the pipeline using Jenkins previously to understand different CI/CD approaches. The project currently focuses on CI validation and is prepared for future Kubernetes deployment using Helm or ArgoCD."
