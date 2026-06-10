@@ -41,10 +41,20 @@ jobs:
           path: GitOps
 
       - name: Helm template
-        run: helm template k8slab ./k8s > GitOps/k8slab.yaml
+        run: |
+          helm template k8slab ./k8s \
+          --set pod.image=yuval597/k8slab \
+          --set pod.tag=${{ github.run_number }} \
+          > GitOps/k8slab.yaml
 
-      - name: transfer to argo
-        run: cd GitOps && git add k8slab.yaml && git commit -m "k8slab.yaml added" && git push
+      - name: Push manifest to GitOps
+        run: |
+          cd GitOps
+          git config user.name "yuval597"
+          git config user.email "yuvaliko597@gmail.com"
+          git add k8slab.yaml
+          git commit -m "Update k8slab manifest to image ${{ github.run_number }}" || echo "No changes to commit"
+          git push
   
   slack-notify:
     runs-on: ubuntu-latest
