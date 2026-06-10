@@ -33,8 +33,21 @@ jobs:
       - name: Docker push
         run: docker push yuval597/k8slab:${{ github.run_number }}
 
+      - name: Checkout GitOps repo
+        uses: actions/checkout@v4
+        with:
+          repository: yuval597/GitOps
+          token: ${{ secrets.GITOPS_TOKEN }}
+          path: GitOps
+
       - name: Helm template
-        run: helm template k8slab ./k8s
+        run: helm template k8slab ./k8s > GitOps/k8slab.yaml
+
+      - name: cd git
+        run: cd GitOps
+        
+      - name: transfer to argo
+        run: cd GitOps && git add k8slab.yaml && git commit -m "k8slab.yaml added" && git push
   
   slack-notify:
     runs-on: ubuntu-latest
