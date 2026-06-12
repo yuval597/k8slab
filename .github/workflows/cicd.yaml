@@ -48,18 +48,20 @@ jobs:
 
       - name: Helm template
         run: |
+          mkdir -p GitOps/${ENVIRONMENT}
+
           helm template k8slab ./k8s \
           --set pod.image=yuval597/k8slab \
           --set pod.tag=${{ github.run_number }} \
-          > GitOps/k8slab.yaml
+          > GitOps/${ENVIRONMENT}/k8slab.yaml
 
       - name: Push to GitOps
         run: |
           cd GitOps
           git config user.name "yuval597"
           git config user.email "yuvaliko597@gmail.com"
-          git add k8slab.yaml
-          git commit -m "Update k8slab manifest to image ${{ github.run_number }}" || echo "No changes to commit"
+          git add .
+          git commit -m "Update ${ENVIRONMENT} deployment to image ${{ github.run_number }}" || echo "No changes to commit"
           git push
   
   slack-notify:
