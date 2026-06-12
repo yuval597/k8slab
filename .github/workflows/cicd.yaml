@@ -1,4 +1,4 @@
-name: start
+name: CI-CD
 
 on:
   workflow_dispatch:
