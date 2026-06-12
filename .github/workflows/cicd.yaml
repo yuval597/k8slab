@@ -48,12 +48,12 @@ jobs:
 
       - name: Helm template
         run: |
-          mkdir -p GitOps/${ENVIRONMENT}
+          mkdir -p GitOps/k8slab/${ENVIRONMENT}
 
           helm template k8slab ./k8s \
           --set pod.image=yuval597/k8slab \
           --set pod.tag=${{ github.run_number }} \
-          > GitOps/${ENVIRONMENT}/k8slab.yaml
+          > GitOps/k8slab/${ENVIRONMENT}/k8slab.yaml
 
       - name: Push to GitOps
         run: |
