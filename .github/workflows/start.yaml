@@ -17,9 +17,15 @@ jobs:
     runs-on: ubuntu-latest
     needs: hello
 
+    env:
+      ENVIRONMENT: ${{ github.ref_name }}
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Print environment
+        run: echo "Environment is $ENVIRONMENT"
       
       - name: Docker login
         uses: docker/login-action@v4
