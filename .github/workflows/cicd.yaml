@@ -50,7 +50,7 @@ jobs:
         run: |
           mkdir -p GitOps/k8slab/${ENVIRONMENT}
 
-          helm template k8slab ./k8s \
+          helm template k8slab ./chart \
           --set pod.image=yuval597/k8slab \
           --set pod.tag=${{ github.run_number }} \
           > GitOps/k8slab/${ENVIRONMENT}/k8slab.yaml
