@@ -7,7 +7,7 @@ database_test:
 
 # service_type should be NodePort, ClusterIP or LoadBalancer
 service_type: LoadBalancer
-replicas: 1
+replicas: 2
 
 ingress:
   enabled: true
