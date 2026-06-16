@@ -18,7 +18,8 @@ The project uses GitHub Actions, Docker, Helm and ArgoCD to build, package and d
 
 
 ## Repository Structure
-'''text
+
+```text
 k8slab
 ├── .github
 │   └── workflows
@@ -35,7 +36,7 @@ k8slab
 ├── Dockerfile
 ├── requirements.txt
 └── README.md
-'''
+```
 
 .github/workflows contains the CI/CD pipeline.
 
