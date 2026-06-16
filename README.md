@@ -60,7 +60,7 @@ ArgoCD continuously monitors the GitOps repository for changes. When a new manif
 Finally, the pipeline sends a Slack notification indicating that the deployment process completed successfully.
 
 
-Git repos for exam:
+## Git repos for exam:
 
 GitOps repo: https://github.com/yuval597/GitOps
 
