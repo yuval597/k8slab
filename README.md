@@ -1,11 +1,11 @@
-Project Overview
+## Project Overview
 
 k8slab is a project built as part of my DevOps studies to practice a complete CI/CD and GitOps workflow.
 
 The project uses GitHub Actions, Docker, Helm and ArgoCD to build, package and deploy a Flask application to Kubernetes across multiple environments (DEV, QA and PROD). The pipeline also sends deployment notifications to Slack after each successful deployment.
 
 
-Technologies
+## Technologies
 
 - Python / Flask
 - Docker & DockerHub
@@ -17,8 +17,9 @@ Technologies
 - Slack Notifications
 
 
-Repository Structure
+## Repository Structure
 
+```text
 k8slab
 ├── .github
 │   └── workflows
@@ -35,6 +36,7 @@ k8slab
 ├── Dockerfile
 ├── requirements.txt
 └── README.md
+```
 
 .github/workflows contains the CI/CD pipeline.
 
@@ -45,7 +47,7 @@ app.py is the Flask application.
 Dockerfile is used to build the container image.
 
 
-Architecture
+## Architecture
 
 The process starts when I manually trigger the GitHub Actions workflow.
 
@@ -58,7 +60,7 @@ ArgoCD continuously monitors the GitOps repository for changes. When a new manif
 Finally, the pipeline sends a Slack notification indicating that the deployment process completed successfully.
 
 
-Git repos for exam:
+## Git repos for exam:
 
 GitOps repo: https://github.com/yuval597/GitOps
 
