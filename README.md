@@ -18,7 +18,7 @@ The project uses GitHub Actions, Docker, Helm and ArgoCD to build, package and d
 
 
 ## Repository Structure
-'''
+'''text
 k8slab
 ├── .github
 │   └── workflows
