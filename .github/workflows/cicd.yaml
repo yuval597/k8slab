@@ -13,6 +13,14 @@ jobs:
         with:
           who-to-greet: "Yuval"
 
+  test-failure:
+    runs-on: ubuntu-latest
+    needs: test-failure
+
+    steps:
+      - name: fail test
+        run: echo "fail test"
+
   build:
     runs-on: ubuntu-latest
     needs: hello
