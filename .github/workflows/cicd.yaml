@@ -26,9 +26,6 @@ jobs:
 
       - name: Print environment
         run: echo "We are in $ENVIRONMENT environment"
-
-      - name: Failure test
-        run: exit 1
       
       - name: Docker login
         uses: docker/login-action@v4
