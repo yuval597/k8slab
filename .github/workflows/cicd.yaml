@@ -64,21 +64,44 @@ jobs:
           git commit -m "Update ${ENVIRONMENT} deployment to image ${{ github.run_number }}" || echo "No changes to commit"
           git push
   
-  slack-notify:
+  slack-success:
     runs-on: ubuntu-latest
-    needs: build
+    needs: build:
+    if: success()
 
     steps: 
-      - name: Slack notify
+      - name: Slack success
         uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
           SLACK_CHANNEL: alerts
           SLACK_USERNAME: Yuval Schreiber
-          SLACK_TITLE: Notification
+          SLACK_TITLE: Success
           SLACK_MESSAGE: |
             Repository: ${{ github.repository }} 
             Branch: ${{ github.ref_name }} 
             Image: yuval597/k8slab:${{ github.run_number }} 
             Commit: ${{ github.sha }}
           SLACK_COLOR: good
+  
+  slack-failure:
+    runs-on: ubuntu-latest
+    needs: build
+    if: failure()
+
+    steps: 
+      - name: Slack failure
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_CHANNEL: alerts
+          SLACK_USERNAME: Yuval Schreiber
+          SLACK_TITLE: Failure
+          SLACK_MESSAGE: |
+            Repository: ${{ github.repository }} 
+            Branch: ${{ github.ref_name }} 
+            Image: yuval597/k8slab:${{ github.run_number }} 
+            Commit: ${{ github.sha }}
+          SLACK_COLOR: danger
+
+      
