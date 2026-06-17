@@ -12,18 +12,10 @@ jobs:
         uses: actions/hello-world-javascript-action@main
         with:
           who-to-greet: "Yuval"
-  
-  test-failure:
-    runs-on: ubuntu-latest
-    needs: hello
-
-    steps:
-      - name: fail test
-        run: exit 1
 
   build:
     runs-on: ubuntu-latest
-    needs: test-failure
+    needs: hello
 
     env:
       ENVIRONMENT: ${{ github.ref_name }}
